@@ -32,14 +32,15 @@ def get_books (user_code:str, books: [Book]) -> [Book]:
 def index():
     if request.method == "POST":
         search = request.form["search_bar"]
-        return redirect(url_for("search_request", search_request=search))
-    return render_template(
+        return redirect(url_for("sellpage", search_request=search))
+    else:
+        return render_template(
         "index.html"
     )
 
 
 
-@app.route("/sell")
+@app.route("/<search_request>")
 def sellpage(search_request):
     return f"<h1>{search_request}</h1>"
 
