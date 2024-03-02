@@ -13,11 +13,8 @@ books = []
 @app.route("/", methods=["GET", "POST"])
 def index():
     print(request.form)
-    books.append((
-        request.form.get()
-    ))
     return render_template(
-        "searchbar.html"
+        "index.html"
     )
 
 
