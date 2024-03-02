@@ -1,7 +1,6 @@
 from flask import render_template, Flask, url_for, render_template, request, redirect
 
 
-
 from dataclasses import dataclass
 
 @dataclass
@@ -42,6 +41,7 @@ def index():
 
 @app.route("/<search_request>")
 def sellpage(search_request):
+
     return f"<h1>{search_request}</h1>"
 
 @app.route("/results")
