@@ -41,15 +41,12 @@ def sell():
     form = SellForm()
     if form.is_submitted():
         result = sell_data_dictionary(request.form)
-        print(result)
         connection = sqlite3.connect("bookdirectory.db")
         cursor = connection.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS books
                     (title TEXT, course_code TEXT, condition TEXT, price REAL, owner_email TEXT, submit TEXT)''')
         cursor.executemany('''INSERT INTO books (title, course_code, condition, price, owner_email, submit) VALUES (?, ?, ?, ?, ?, ?)''', (result,))
         connection.commit()
-        for row in cursor.execute ('''SELECT course_code, title, price, condition, owner_email FROM books'''):
-            print(row)
         connection.close()
         return redirect(url_for("index"))
     return render_template("sell.html", form=form)
