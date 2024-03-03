@@ -4,7 +4,7 @@
 }
 
 .main {
-    background: linear-gradient(to top, rgba(11, 11, 162, 0.5), rgba(0, 0, 255, 0.5)), url(images\3.jpeg);
+    background: linear-gradient(to top, rgba(11, 11, 162, 0.5), rgba(0, 0, 255, 0.5)), url(/images/3.jpeg);
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -27,7 +27,7 @@
     font-family: 'Arial';
     padding-left: 35px;
     float: left;
-    padding-top: 25px;
+    padding-top: 32.5px;
 }
 
 .menu {
@@ -76,6 +76,7 @@ ul li a:hover{
 
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -90,5 +91,18 @@ ul li a:hover{
 
 
 body {
-    overflow-y: scroll;
+    margin-bottom: 200%;
 }
+
+.myBox {
+    border: none;
+    padding: 5px;
+    font: 24px/36px sans-serif;
+    width: 200px;
+    height: 200px;
+    overflow: scroll;
+    background-color: white;
+    margin-left: 830px;
+    margin-top: 200px;
+}
+
