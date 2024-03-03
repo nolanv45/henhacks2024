@@ -56,6 +56,10 @@ def index():
     )
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/<search_request>")
 def results(search_request):
     books_for_sale = search_request
@@ -73,7 +77,7 @@ def sell_data_dictionary(dictionary) -> tuple:
 
 
 @app.route("/sell", methods=['GET', 'POST'])
-def sellpage():
+def sell():
     form = SellForm()
     if form.is_submitted():
         result = sell_data_dictionary(request.form)
