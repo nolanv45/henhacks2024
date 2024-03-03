@@ -42,15 +42,10 @@ def get_books (user_code:str, books: [Book]) -> [Book]:
 
 
 #acts as the homepage
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    if request.method == "POST":
-        search = request.form["search_bar"]
-        return redirect(url_for("results", search_request=search))
-    else:
-        return render_template(
-        "index.html"
-    )
+    return render_template("index.html")
+
 
 #about the project information page
 @app.route("/about")
@@ -59,10 +54,7 @@ def about():
 
 
 
-@app.route("/<search_request>")
-def results(search_request):
-    books_for_sale = search_request
-    return render_template("results.html", books=books_for_sale)
+
 
 
 #helper function used to turn dictionary response from sell page
@@ -91,8 +83,37 @@ def sell():
         for row in cursor.execute ('''SELECT course_code, title, price, condition, owner_email FROM books'''):
             print(row)
         connection.close()
-        return render_template("index.html")
+        return redirect(url_for("index"))
     return render_template("sell.html", form=form)
+
+
+def results_helper(search):
+        connection = sqlite3.connect("bookdirectory.db")
+        cursor = connection.cursor()
+        
+        resultlist = []
+        for row in cursor.execute ('''SELECT course_code, title, price, condition, owner_email FROM books'''):
+            if search in row:
+                resultlist.append(row)
+        return resultlist
+
+
+@app.route("/buy", methods=['GET','POST'])
+def buy():
+    if request.method == "POST":
+        search = request.form["search_bar"]
+        results = results_helper(search)
+        return render_template("results.html", books = results)
+    else:
+        return render_template("buy.html")
+  
+
+
+
+            
+
+
+
 
 """def submit_book (user_title = str, user_course_code = str, user_condition = str, user_price = float, user_owner_email = str):
     # submits the user's information into a book that then can be appended to the overall book list

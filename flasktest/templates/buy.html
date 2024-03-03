@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
     <title>Buy Page</title>
-    <link rel="stylesheet" href="buy.css">
+    <link rel="stylesheet" href="static\buy.css">
 </head> 
 <body>
     <div class="main">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="search" style="text-align: center;">
-            <form action="" method="get">
+            <form action="" method="post">
                 <p>Searching For:</p>
                 <p><input type = "text" id="search" name="search_bar" placeholder="Search" onkeyup="search()" /></p>
                 <p id="output"></p>
@@ -29,25 +29,5 @@
             </form>
         </div>
     </div>
-    
-    <script>
-        var input = document.getElementById('search');
-        var output = document.getElementById('output');
-        
-        function search() {
-        var searchTerm = document.getElementById('search').value;
-        if (searchTerm === "CISC106") {
-            document.getElementById('output').innerHTML = "You typed: " + searchTerm;
-        }
-        if (searchTerm === "") {
-            document.getElementById('output').innerHTML = "";
-        }
-        else {
-            document.getElementById('output').innerHTML = 'No matching result for the search term: ' + searchTerm;
-        }
-        }
-
-        input.addEventListener('change', search);
-    </script>
 </body>
 </html>
