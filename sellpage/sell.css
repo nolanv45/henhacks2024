@@ -3,7 +3,7 @@
     padding: 0;
 }
 .main {
-    background: linear-gradient(to top, rgb(15, 15, 106), blue);
+    background: linear-gradient(to top, rgba(11, 11, 162, 0.5), rgba(0, 0, 255, 0.5)), url(images\3.jpeg);
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -83,7 +83,7 @@ ul li a:hover{
 
 .form h1 {
     width: 220px;
-    font-family: arial;
+    font-family: 'Times New Roman';
     text-align: center;
     color: black;
     font-size: 22px;
@@ -122,4 +122,5 @@ ul li a:hover{
     font-size: 22px;
     margin-top: 640px;
     margin-left: 775px;
+    font-family: 'Times New Roman';
 }
