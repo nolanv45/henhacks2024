@@ -16,36 +16,30 @@
                     <li><a href="{{ url_for('index') }}">HOME</a></li>
                     <li><a href="{{ url_for('about') }}">ABOUT</a></li>
                     <li><a href="{{ url_for('sell') }}">SELL</a></li>
+                    <li><a href="{{ url_for('buy') }}">BUY</a></li>
                 </ul>
             </div>
         </div>
-        <div class="contents">
-            <!<div class="form">
+        <div class="contents" style="text-align: center;">
                     <h1>Book Information</h1>
                     <form action="" method="post">
                         <p>{{form.title.label}}<br>
-                            {{form.title(size=5)}}
+                            {{form.title(size=10)}}
                         </p>
                         <p>{{form.course_code.label}}<br>
-                             {{form.course_code(size=5)}}
+                             {{form.course_code(size=10)}}
                         </p>
                         <p>{{form.condition.label}} <br>
-                            {{form.condition(size=5)}}
+                            {{form.condition(size=10)}}
                         </p>
                         <p>{{form.price.label}} <br>
-                            {{form.price(size=20)}}
+                            {{form.price(size=10)}}
                         </p>
                         <p>{{form.email.label}} <br>
-                            {{form.email(size=20)}}
+                            {{form.email(size=10)}}
                         </p>
                         <p>{{form.submit()}}</p>
                     </form>
-
-                    <!select name="condition" id="condition">
-                        <!option value="new">New<!/option>
-                        <!option value="slightly used">Slightly Used<!/option>
-                        <!option value="used">Used<!/option>
-                    <!/select>
                 </div>
         </div>
     </div>

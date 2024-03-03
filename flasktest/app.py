@@ -97,13 +97,15 @@ def results_helper(search):
                 resultlist.append(row)
         return resultlist
 
+headings = ("Course Code", "Title", "Price", "Condition", "Email")
+
 
 @app.route("/buy", methods=['GET','POST'])
 def buy():
     if request.method == "POST":
         search = request.form["search_bar"]
         results = results_helper(search)
-        return render_template("results.html", books = results)
+        return render_template("results.html", headings=headings, results=results)
     else:
         return render_template("buy.html")
   

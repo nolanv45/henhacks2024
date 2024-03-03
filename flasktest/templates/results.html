@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
     <title>Webpage Design</title>
-    <link rel="stylesheet" href="static\style.css">
+    <link rel="stylesheet" href="static\result.css">
 </head>
 <body>
     <div class="main">
@@ -16,15 +16,30 @@
                     <li><a href="{{ url_for('index') }}">HOME</a></li>
                     <li><a href="{{ url_for('about') }}">ABOUT</a></li>
                     <li><a href="{{ url_for('sell') }}">SELL</a></li>
+                    <li><a href="{{ url_for('buy') }}">BUY</a></li>
                 </ul>
             </div>
         </div>
-        <div class="search">
-            <form action="#" method="post">
-                <p>Faaaaaaaaa:</p>
-                <p>{{ books }}</p>
+        <div class="result_table" style="text-align: center;">
+            <body>
+                <table class="centered_table">
+                    <tr>
+                        {% for header in headings %}
+                        <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in results %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
 
-            </form>
+                    </tr>
+                </table>
+            </body>
         
     </div>
 </body>
