@@ -1,5 +1,6 @@
 from flask import render_template, Flask, url_for, render_template, request, redirect
-
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, FloatField
 
 from dataclasses import dataclass
 
@@ -13,7 +14,24 @@ class Book:
 
 
 
+class SellForm(FlaskForm):
+    title = StringField('Title')
+    course_code = StringField('Course Code')
+    condition = StringField('Condition')
+    price = FloatField('Price')
+    email = StringField('Email')
+    submit = SubmitField('Submit')
+
+
+
+
+
+
+
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'theawesomekey'
+
 
 def get_books (user_code:str, books: [Book]) -> [Book]:
     # makes a new list of the books that correspond with the course code entered
@@ -38,12 +56,29 @@ def index():
     )
 
 
-
 @app.route("/<search_request>")
 def results(search_request):
-    books_for_sale = get_books(search_request)
-    return render_template("results.html", books_for_sale=books_for_sale)
+    books_for_sale = search_request
+    return render_template("results.html", books=books_for_sale)
 
-@app.route("/sell")
+
+
+def sell_data_dictionary(dictionary) -> tuple:
+    new_list = []
+    for key in dictionary:
+        new_list.append(dictionary[key])
+    print(tuple(new_list))
+    return tuple(new_list)
+
+
+
+
+
+@app.route("/sell", methods=['GET', 'POST'])
 def sellpage():
-    return render_template("")
+    form = SellForm()
+    if form.is_submitted():
+        result = request.form
+        sell_data_dictionary(result)
+        return render_template("index.html", result=result)
+    return render_template("sell.html", form=form)
