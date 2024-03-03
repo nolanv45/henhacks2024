@@ -51,5 +51,5 @@ cur.execute('''CREATE TABLE IF NOT EXISTS books
 con.commit()
 
 for row in cur.execute ('''SELECT course_code, title, price, condition, owner_email FROM books'''):
-    print(row)
+    if row
 

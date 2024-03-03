@@ -13,7 +13,7 @@ class Book:
     owner_email:str
 
 
-
+#created a sellform through flask to get data from multiple fields back from html
 class SellForm(FlaskForm):
     title = StringField('Title')
     course_code = StringField('Course Code')
@@ -21,9 +21,6 @@ class SellForm(FlaskForm):
     price = FloatField('Price')
     email = StringField('Email')
     submit = SubmitField('Submit')
-
-
-
 
 
 
@@ -44,7 +41,7 @@ def get_books (user_code:str, books: [Book]) -> [Book]:
 
 
 
-
+#acts as the homepage
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -55,10 +52,12 @@ def index():
         "index.html"
     )
 
-
+#about the project information page
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
 
 @app.route("/<search_request>")
 def results(search_request):
@@ -66,7 +65,8 @@ def results(search_request):
     return render_template("results.html", books=books_for_sale)
 
 
-
+#helper function used to turn dictionary response from sell page
+#into tuple to be stored in database
 def sell_data_dictionary(dictionary) -> tuple:
     new_list = []
     for key in dictionary:
@@ -75,7 +75,7 @@ def sell_data_dictionary(dictionary) -> tuple:
 
 
 
-
+#sell page which puts book information from fields into database
 @app.route("/sell", methods=['GET', 'POST'])
 def sell():
     form = SellForm()
@@ -90,6 +90,7 @@ def sell():
         connection.commit()
         for row in cursor.execute ('''SELECT course_code, title, price, condition, owner_email FROM books'''):
             print(row)
+        connection.close()
         return render_template("index.html")
     return render_template("sell.html", form=form)
 
