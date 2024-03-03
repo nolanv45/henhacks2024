@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from bakery import assert_equal
 import sqlite3
 
+
 @dataclass
 class Book:
     title:str
