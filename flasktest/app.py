@@ -1,5 +1,5 @@
 from flask import render_template, Flask, url_for, render_template, request, redirect
-
+import sqlite3
 
 from dataclasses import dataclass
 
@@ -47,3 +47,17 @@ def sellpage(search_request):
 @app.route("/results")
 def results():
     return render_template("", entries=searchedItem)
+
+con = sqlite3.connect("books_for_sale.db")
+cur = con.cursor()
+
+cur.execute('''CREATE TABLE IF NOT EXISTS books
+                    (title text, course_code text, condition text, price real, owner_email text)''')
+
+cur.execute('''INSERT INTO books VALUES
+                    book.title, book.course_code, book.conditions, book.price, book.owner_email''')
+
+con.commit()
+
+for row in cur.execute ('''SELECT * FROM books'''):
+    print(row)
