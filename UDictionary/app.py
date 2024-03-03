@@ -2,7 +2,6 @@ from flask import render_template, Flask, url_for, render_template, request, red
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 import sqlite3
-from dataclasses import dataclass
 
 
 #created a sellform through flask to get data from multiple fields back from html
@@ -14,27 +13,19 @@ class SellForm(FlaskForm):
     email = StringField('Email')
     submit = SubmitField('Submit')
 
-
 #created app in flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'theawesomekey'
-
 
 #acts as the homepage
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
 #about the project information page
 @app.route("/about")
 def about():
     return render_template("about.html")
-
-
-
-
-
 
 #helper function used to turn dictionary response from sell page
 #into tuple to be stored in database
@@ -43,8 +34,6 @@ def sell_data_dictionary(dictionary) -> tuple:
     for key in dictionary:
         new_list.append(dictionary[key])
     return tuple(new_list)
-
-
 
 #sell page which puts book information from fields into database
 @app.route("/sell", methods=['GET', 'POST'])
@@ -65,7 +54,7 @@ def sell():
         return redirect(url_for("index"))
     return render_template("sell.html", form=form)
 
-
+#checks to see if the search query is in any item stored in db
 def results_helper(search):
         connection = sqlite3.connect("bookdirectory.db")
         cursor = connection.cursor()
@@ -76,6 +65,7 @@ def results_helper(search):
                 resultlist.append(row)
         return resultlist
 
+#used to build headers for table
 headings = ("Course Code", "Title", "Price", "Condition", "Email")
 
 # creates a help page
