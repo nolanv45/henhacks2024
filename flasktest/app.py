@@ -3,10 +3,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 import sqlite3
 from dataclasses import dataclass
-import os
-
-currentdirectory = os.path.dirname(os.path.abspath(__file__))
-
 
 @dataclass
 class Book:
