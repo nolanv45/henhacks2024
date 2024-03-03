@@ -31,7 +31,7 @@ def get_books (user_code:str, books: [Book]) -> [Book]:
 def index():
     if request.method == "POST":
         search = request.form["search_bar"]
-        return redirect(url_for("sellpage", search_request=search))
+        return redirect(url_for("results", search_request=search))
     else:
         return render_template(
         "index.html"
@@ -40,24 +40,10 @@ def index():
 
 
 @app.route("/<search_request>")
-def sellpage(search_request):
+def results(search_request):
+    books_for_sale = get_books(search_request)
+    return render_template("results.html", books_for_sale=books_for_sale)
 
-    return f"<h1>{search_request}</h1>"
-
-@app.route("/results")
-def results():
-    return render_template("", entries=searchedItem)
-
-con = sqlite3.connect("books_for_sale.db")
-cur = con.cursor()
-
-cur.execute('''CREATE TABLE IF NOT EXISTS books
-                    (title text, course_code text, condition text, price real, owner_email text)''')
-
-cur.execute('''INSERT INTO books VALUES
-                    book.title, book.course_code, book.conditions, book.price, book.owner_email''')
-
-con.commit()
-
-for row in cur.execute ('''SELECT * FROM books'''):
-    print(row)
+@app.route("/sell")
+def sellpage():
+    return render_template("")
