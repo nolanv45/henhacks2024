@@ -103,3 +103,21 @@ ul li a:hover{
 .srch:focus{
     outline: none;
 }
+
+.content {
+    color: white;
+    margin:auto;
+    width: 50%;
+    padding: 70px 0;
+    text-align: center;
+}
+
+
+.centered_table {
+    color: white;
+    font-size: 20px;
+    margin:auto;
+    width: 50%;
+    padding: 70px 0;
+    text-align: center;
+}

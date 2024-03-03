@@ -64,20 +64,18 @@ ul li a:hover{
 }
 
 .content {
-    width: 1200px;
-    height: auto;
-    margin: auto;
     color: white;
-    position: relative;
-    margin-top: 250px;
+    margin:auto;
+    width: 50%;
+    height: 50%;
+    padding: 70px 0;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 35px;
 }
 
 .content .par {
-    padding-left: 20px;
-    padding-bottom: 25px;
-    font-family: Times New Roman;
     font-size: 25px;
-    letter-spacing: 1.2px;
-    line-height: 30px;
-    transition: 0.3s ease-in-out;
 }
