@@ -23,7 +23,7 @@
 
 .logo {
     color: yellow;
-    font-size: 5%;
+    font-size: 50px;
     font-family: 'Arial';
     padding-left: 35px;
     float: left;
@@ -45,7 +45,7 @@ ul{
 
 ul li{
     list-style: none;
-    margin-left: 300px;
+    margin-left: 275px;
     margin-top: 45px;
     font-size: 30px;
 }
