@@ -45,7 +45,7 @@ ul{
 
 ul li{
     list-style: none;
-    margin-left: 300px;
+    margin-left: 250px;
     margin-top: 45px;
     font-size: 30px;
 }
@@ -60,6 +60,17 @@ ul li a{
 
 ul li a:hover{
     color: yellow;
+}
+
+.search {
+    width: 330px;
+    margin-left: 45%;
+    margin-top: 5%;
+}
+
+.search p{
+    color: white;
+    font-size: 22px;
 }
 
 
